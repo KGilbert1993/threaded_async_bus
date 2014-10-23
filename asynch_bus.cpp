@@ -27,7 +27,7 @@ void * publish(void *param) {
 
 void * listen_1(void *param) {
 	while(RUNNING) {
-		while(BUS != 1) {}
+		while(BUS != 1 && RUNNING) {}
 		pthread_mutex_lock(&BUS_LOCK);
 		cout << "listen_1!\n";
 		BUS = 0xAA;		// listen_1 AWK	
@@ -38,7 +38,7 @@ void * listen_1(void *param) {
 
 void * listen_2(void *param) {
 	while(RUNNING) {
-		while(BUS != 2) {}
+		while(BUS != 2 && RUNNING) {}
 		pthread_mutex_lock(&BUS_LOCK);
 		cout << "listen_2!\n";
 		BUS = 0xBB;		// listen_2 AWK
